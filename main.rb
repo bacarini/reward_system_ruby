@@ -1,7 +1,7 @@
 require 'set'
 require_relative 'matrix'
 
-file_array = File.readlines('input-full.txt').map { |line| line.split.map(&:to_i) }
+file_array = File.readlines('input.txt').map { |line| line.split.map(&:to_i) }
 
 @invites = Set.new(file_array)
 @customers = Set.new(@invites.to_a.flatten)
@@ -37,8 +37,8 @@ def build_graph(customer, friend, score = 0)
 end
 
 def ranking
-  @customers.map.with_index do |customer, index|
-    { index+1 => Matrix.sum_values_row(@matrix, index) }
+  @customers.map do |customer|
+    { customer => Matrix.sum_values_row(@matrix, customer - 1) }
   end.sort_by { |hash| hash.values }.reverse
 end
 
