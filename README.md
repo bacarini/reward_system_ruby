@@ -9,7 +9,7 @@ Also, to count as a valid invitation, the invited customer must have invited som
 
 So, given the input:
 1 2
-1 3 
+1 3
 3 4
 2 4
 4 5
